@@ -2,8 +2,8 @@
 Hi,
 Please click on the link to confirm your registration,
 {% if recovery %}
-http://{{ domain }}{% url 'users:newpassword' uidb64=uid token=token %}
+https://{{ domain }}{% url 'users:newpassword' uidb64=uid token=token %}
 {% else %}
-http://{{ domain }}{% url 'users:activate' uidb64=uid token=token %}
+https://{{ domain }}{% url 'users:activate' uidb64=uid token=token %}
 {% endif %}
 {% endautoescape %}
