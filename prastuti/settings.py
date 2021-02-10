@@ -12,7 +12,6 @@ https://docs.djangoproject.com/en/3.1/ref/settings/
 
 from pathlib import Path
 import os
-from .emailInfo import *
 from django.contrib.messages import constants as messages
 import django_heroku
 import dj_database_url
@@ -25,13 +24,12 @@ TEMPLATE_DIR = os.path.join(BASE_DIR, 'templates')
 # See https://docs.djangoproject.com/en/3.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'balasayamamanj1237)@_u8=*gaddopur=ajmk^sdakgjhksfkjshdkjfh$q1=spi&8vo'
-# SECRET_KEY = os.environ['SECRET_KEY']
+SECRET_KEY = os.environ.get('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
-ALLOWED_HOSTS = ['*']
+ALLOWED_HOSTS = ['prastuti-21.herokuapp.com', 'localhost', '127.0.0.1', '0.0.0.0']
 
 # Application definition
 
@@ -132,11 +130,11 @@ STATICFILES_DIRS = (
 AUTH_USER_MODEL = 'users.CustomUser'
 
 # Email
-EMAIL_HOST = EMAIL_HOST
-EMAIL_USE_TLS = EMAIL_USE_TLS
-EMAIL_HOST_USER = EMAIL_HOST_USER
-EMAIL_HOST_PASSWORD = EMAIL_HOST_PASSWORD
-EMAIL_PORT = EMAIL_PORT
+EMAIL_HOST = os.environ.get("EMAIL_HOST")
+EMAIL_USE_TLS = os.environ.get("EMAIL_USE_TLS")
+EMAIL_HOST_USER = os.environ.get("EMAIL_HOST_USER")
+EMAIL_HOST_PASSWORD = os.environ.get("EMAIL_HOST_PASSWORD")
+EMAIL_PORT = os.environ.get("EMAIL_PORT")
 
 MESSAGE_TAGS = {
     messages.ERROR: 'danger'
