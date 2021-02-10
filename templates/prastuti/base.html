@@ -22,8 +22,13 @@ maximum-scale=1.0, user-scalable=no" />
   <div>
     <nav class="navbar fixed-top navbar-expand-lg">
       <div class="container-fluid">
-        <a class="navbar-brand name_logo" href="#bg-video"><img class="name_image" src="{% static 'prastuti/img/logo.png'%}" />
+        {% if currentHome %}
+        <a class="navbar-brand name_logo" href="#bg-video"><img class="name_image" src="{% static 'prastuti/img/logo.jpg'%}" />
         </a>
+        {% else %}
+        <a class="navbar-brand name_logo" href="{% url 'home'%}"><img class="name_image" src="{% static 'prastuti/img/logo.jpg'%}" />
+        </a>
+        {% endif %}
         <button class="navbar-toggler custom-toggler float-xs-right ml-auto" type="button" data-toggle="collapse"
           data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
           aria-label="Toggle navigation">
@@ -92,7 +97,7 @@ maximum-scale=1.0, user-scalable=no" />
         <div class="row">
           <!--<div class="col"></div>-->
           <div class="col">
-            <img class="footer_image" src="{% static 'prastuti/img/logo.png'%}" />
+            <img class="footer_image" src="{% static 'prastuti/img/logo.jpg'%}" />
             <span class="text-white footer_text">Events by Electrical Engineering, IIT BHU</span>
           </div>
           <!--<div class="col"></div>-->
@@ -111,45 +116,6 @@ maximum-scale=1.0, user-scalable=no" />
   </script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css"></script>
   <script>
-    // var scroll = new SmoothScroll('a', {
-    //   speed: 1000,
-    //   speedAsDuration: true,
-    // });
-
-    //   $(function () {
-
-    //     if (location.href.indexOf("schedule") > -1) {
-    //       oldObj = $('.active');
-    //       oldObj.removeClass('active');
-    //       $('.schedule').addClass('active')
-
-    //     } else if (location.href.indexOf("events") > -1) {
-    //       oldObj = $('.active');
-    //       oldObj.removeClass('active');
-    //       $('.events').addClass('active')
-
-    //     } else if (location.href.indexOf("#about") > -1) {
-    //       oldObj = $('.active');
-    //       oldObj.removeClass('active');
-    //       $('.about').addClass('active')
-
-    //     } else if (location.href.indexOf("users") > -1) {
-    //       oldObj = $('.active');
-    //       oldObj.removeClass('active');
-
-    //     } else {
-    //       oldObj = $('.active');
-    //       oldObj.removeClass('active');
-    //       $('.home').addClass('active')
-
-    //     }
-    //     $('a').on('click', function (e) {
-    //       oldObj = $('.active');
-    //       oldObj.removeClass('active');
-    //       $(this).addClass('active');
-    //     });
-
-    //   });
     //  // Basice Code keep it 
     $(document).ready(function () {
       $(document).on("scroll", onScroll);
