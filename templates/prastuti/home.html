@@ -84,20 +84,12 @@
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
 
 <script>
-//   $(window).load();
-//   function removeLoader(){
-//     $('.loader').hide();
-//   }
+
+    function removeLoader(){
+     $('.loader').hide();
+  }
     $(window).load(function() {
-    $('.loader').fadeOut("slow");
+      setTimeout(removeLoader,2000);
   });
-//   setTimeout(function () {
-//     $(window).load(function() { $('.loader').hide(); });
-//    }, 2500);
- 
-//   setTimeout(function () {
-//     $(".loader").fadeOut();
-//     $(".loader_img").delay(150).fadeOut("slow");
-//   }, 2500);
 </script>
 {% endblock %}
