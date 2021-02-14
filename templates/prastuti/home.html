@@ -88,9 +88,12 @@
 //   function removeLoader(){
 //     $('.loader').hide();
 //   }
-  setTimeout(function () {
-    $(window).load(function() { $('.loader').hide(); });
-   }, 2500);
+    $(window).load(function() {
+    $('.loading').fadeOut("slow");
+  });
+//   setTimeout(function () {
+//     $(window).load(function() { $('.loader').hide(); });
+//    }, 2500);
  
 //   setTimeout(function () {
 //     $(".loader").fadeOut();
