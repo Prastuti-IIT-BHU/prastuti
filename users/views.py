@@ -112,7 +112,10 @@ def userLogout(request):
 
 @login_required(login_url='users:usersignin')
 def userProfile(request, email):
-    user = CustomUser.objects.get(email=email)
+    try:
+        user = CustomUser.objects.get(email=email)
+    except CustomUser.DoesNotExist:
+        return redirect('home')
     if user != request.user:
         return redirect('home')
     team_cnt = 0
