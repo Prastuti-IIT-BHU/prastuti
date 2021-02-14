@@ -84,9 +84,10 @@
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
 
 <script>
-  setTimeout(function () {
-    $(".loader").fadeOut();
-    $(".loader_img").delay(150).fadeOut("slow");
-  }, 2500);
+  $(window).load(function() { $('.loader').hide(); });
+//   setTimeout(function () {
+//     $(".loader").fadeOut();
+//     $(".loader_img").delay(150).fadeOut("slow");
+//   }, 2500);
 </script>
 {% endblock %}
