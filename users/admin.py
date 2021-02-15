@@ -1,5 +1,6 @@
 from django.contrib import admin
 from django.contrib.auth.admin import UserAdmin as DjangoUserAdmin
+from import_export.admin import ImportExportModelAdmin
 from django.utils.translation import ugettext_lazy as _
 from django.contrib.auth import get_user_model
 # from .models import CustomUser
@@ -7,7 +8,7 @@ from django.contrib.auth import get_user_model
 CustomUser = get_user_model()
 
 @admin.register(CustomUser)
-class CustomUserAdmin(DjangoUserAdmin):
+class CustomUserAdmin(DjangoUserAdmin,ImportExportModelAdmin):
     """Define admin model for custom CustomUser model with no email field."""
 
     fieldsets = (
