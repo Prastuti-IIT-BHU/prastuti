@@ -45,10 +45,8 @@ INSTALLED_APPS = [
     'users.apps.UserConfig',
     'events.apps.EventsConfig',
     'teams.apps.TeamsConfig',
-    'import_export',
 ]
 
-IMPORT_EXPORT_USE_TRANSACTIONS = True
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
