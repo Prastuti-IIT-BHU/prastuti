@@ -17,9 +17,6 @@ from events import models as eventModel
 def registerTeam(request, event):
     event = Event.objects.get(event_name=event)
     # makes sure not more than 1 team for 1 event
-    messages.error(request, 'Event Registrations will open soon.')
-    events = eventModel.Event.objects.all()
-    return render(request, 'prastuti/home.html', {'events': events})
 
     profile = request.user
     if userViews.isRegisteredForEvent(profile, event):
