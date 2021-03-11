@@ -6,12 +6,12 @@
   <input id="backbuttonstate" type="text" value="0" style="display:none;" />
   <div class="row">
     <div class="col col-12 col-lg-12">
-      <form class="display-5">
+      <form method="POST" action="{% url 'event_registration:register' event %}" class="display-5">
           {% csrf_token %}
           <h1 class='display-5 text-center'>Registration for {{ event.event_name }} </h1>
           <hr>
           <div class="form-group">
-            <label for="team_size" disabled>Choose the team size: </label>
+            <label for="team_size">Choose the team size: </label>
             <select class="form-control py-2" name="team_size" id="size" onchange="emailField()">
               {% if not teamsize %}
               <option class="text-muted" value="0">Select Team Size</option>
@@ -38,7 +38,7 @@
               {% endif %}
               <div class="form-group">
                 <label for="teamname">Team name:</label>
-                <input class="form-control form-control-sm" type="text"  id="teamname" name='team_name' value = "{{teamname}}" disabled>
+                <input class="form-control form-control-sm" type="text"  id="teamname" name='team_name' value = "{{teamname}}" required>
                     {% if error|get_key:teamname %}
                       <div class="alert alert-danger">
                         <span>{{error|get_key:teamname}}</span>
@@ -48,7 +48,7 @@
               {% for key,value in emailids.items %}
                 <div class="form-group">
                     <label for="email{{forloop.counter}}">Email id of member {{forloop.counter}}</label>
-                    <input class="form-control form-control-sm" type="email"  id ="email{{forloop.counter}}" name='email{{forloop.counter}}' value = "{{value}}" disabled>
+                    <input class="form-control form-control-sm" type="email"  id ="email{{forloop.counter}}" name='email{{forloop.counter}}' value = "{{value}}" >
                     {% if error|get_key:key %}
                         <div class="alert alert-danger">
                           <span>{{error|get_key:key}}</span>
@@ -61,10 +61,10 @@
                 <div class="form-group">
                     {% if event.event_name == 'Recognizance'%}
                     <label for="team_id">Kaggle id of the team</label>
-                    <input class="form-control form-control-sm" type="text"  id="team_id" name='team_id' value = "{{team_id}}"  disabled>
+                    <input class="form-control form-control-sm" type="text"  id="team_id" name='team_id' value = "{{team_id}}"  required>
                   {% else %}
                    <label for="team_id">HackerRank id of the user</label>
-                  <input class="form-control form-control-sm" type="text" id="team_id" name='team_id' value = "{{team_id}}"  disabled>
+                  <input class="form-control form-control-sm" type="text" id="team_id" name='team_id' value = "{{team_id}}"  required>
                     {% endif %}
                 </div>
               {% endif %}
@@ -112,7 +112,7 @@
             var name = document.createElement("input")
             name.setAttribute("class","form-control form-control-sm")
             name.setAttribute("type",'text')
-            //name.required = true
+            name.required = true
             name.setAttribute("name","team_name")
             node.appendChild(lab)
             node.appendChild(name)
@@ -126,7 +126,7 @@
                 field.setAttribute("class","form-control form-control-sm")
                 field.setAttribute('type',"email");
                 field.setAttribute('name','email' + i);
-                //field.required = true
+                field.required = true
                 if (i == 1){
                  field.setAttribute('value','{{emailids|get_key:"email1"}}')
                 }
