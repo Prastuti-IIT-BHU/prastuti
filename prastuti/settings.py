@@ -45,6 +45,7 @@ INSTALLED_APPS = [
     'users.apps.UserConfig',
     'events.apps.EventsConfig',
     'teams.apps.TeamsConfig',
+    'import_export',
 ]
 
 
