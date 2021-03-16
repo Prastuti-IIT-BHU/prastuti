@@ -16,7 +16,7 @@ class ExportCsvMixin(ImportExportModelAdmin):
         response = HttpResponse(content_type='text/csv')
         response['Content-Disposition'] = 'attachment; filename={}.csv'.format(meta)
         writer = csv.writer(response)
-        writer.writerow(field_names)
+        #writer.writerow(field_names)
         for obj in queryset:
             temp = [getattr(obj, field) for field in field_names]
             members = ",".join([ str(member) for member in getattr(obj,"team_member").all()])
