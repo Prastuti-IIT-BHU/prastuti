@@ -21,6 +21,10 @@ class ExportCsvMixin(ImportExportModelAdmin):
             temp = [getattr(obj, field) for field in field_names]
             members = ",".join([ str(member) for member in getattr(obj,"team_member").all()])
             temp.append(members)
+            names = ",".join([ str(member.name) for member in getattr(obj,"team_member").all()])
+            temp.append(names)
+            years = ",".join([ str(member.year) for member in getattr(obj,"team_member").all()])
+            temp.append(years)
             writer.writerow(temp)
 
         return response
